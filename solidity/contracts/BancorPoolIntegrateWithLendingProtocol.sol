@@ -19,9 +19,13 @@ contract BancorPoolIntegrateWithLendingProtocol is Owned {
     using SafeMath for uint;
 
     IERC20Token public erc20;
+    CTokenInterfaces public cDAI;
+    IyDAI public public yDAI;
 
-  	constructor(address _erc20) public {
+  	constructor(address _erc20, address _cToken, address _yDAI) public {
         erc20 = IERC20Token(_erc20);
+        cDAI = CTokenInterfaces(_cToken);
+        yDAI = IyDAI(_yDAI);
   	}
 
     /**
