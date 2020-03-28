@@ -1,4 +1,6 @@
-pragma solidity ^0.5.16;
+//pragma solidity ^0.5.16;
+pragma solidity 0.4.26;
+
 
 interface ComptrollerInterface {
     /**
@@ -10,7 +12,8 @@ interface ComptrollerInterface {
 
     /*** Assets You Are In ***/
 
-    function enterMarkets(address[] calldata cTokens) external returns (uint[] memory);
+    function enterMarkets(address[] cTokens) external returns (uint[]);
+    //function enterMarkets(address[] calldata cTokens) external returns (uint[] memory);
     function exitMarket(address cToken) external returns (uint);
 
     /*** Policy Hooks ***/

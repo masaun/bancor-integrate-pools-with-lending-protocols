@@ -1,4 +1,6 @@
-pragma solidity ^0.5.16;
+//pragma solidity ^0.5.16;
+pragma solidity 0.4.26;
+
 
 import "./ComptrollerInterface.sol";
 import "./InterestRateModel.sol";
@@ -38,12 +40,14 @@ contract CTokenStorage {
     /**
      * @notice Administrator for this contract
      */
-    address payable public admin;
+    address public admin;
+    //address payable public admin;
 
     /**
      * @notice Pending administrator for this contract
      */
-    address payable public pendingAdmin;
+    address public pendingAdmin;
+    //address payable public pendingAdmin;
 
     /**
      * @notice Contract which oversees inter-cToken operations
@@ -232,7 +236,8 @@ contract CTokenInterface is CTokenStorage {
 
     /*** Admin Functions ***/
 
-    function _setPendingAdmin(address payable newPendingAdmin) external returns (uint);
+    function _setPendingAdmin(address newPendingAdmin) external returns (uint);
+    //function _setPendingAdmin(address payable newPendingAdmin) external returns (uint);
     function _acceptAdmin() external returns (uint);
     function _setComptroller(ComptrollerInterface newComptroller) public returns (uint);
     function _setReserveFactor(uint newReserveFactorMantissa) external returns (uint);
