@@ -1,9 +1,9 @@
 pragma solidity 0.4.26;
 
-import "openzeppelin-solidity/contracts/token/ERC20/IERC20.sol";
+import "./openzeppelin-solidity/contracts/token/ERC20/IERC20.sol";
 
-import "openzeppelin-solidity/contracts/math/SafeMath.sol";
-import "openzeppelin-solidity/contracts/ownership/Ownable.sol";
+import "./openzeppelin-solidity/contracts/math/SafeMath.sol";
+import "./openzeppelin-solidity/contracts/ownership/Ownable.sol";
 
 
 /**
@@ -11,7 +11,7 @@ import "openzeppelin-solidity/contracts/ownership/Ownable.sol";
  */
 contract BancorPoolIntegrateWithLendingProtocol is Ownable {
     using SafeMath for uint;
-    
+
   	constructor(address _erc20) public {
         erc20 = IERC20(_erc20);
   	}
