@@ -20,7 +20,7 @@ contract BancorPoolIntegrateWithLendingProtocol is Owned {
 
     IERC20Token public erc20;
     CTokenInterfaces public cDAI;
-    IyDAI public public yDAI;
+    IyDAI public yDAI;
 
   	constructor(address _erc20, address _cToken, address _yDAI) public {
         erc20 = IERC20Token(_erc20);
