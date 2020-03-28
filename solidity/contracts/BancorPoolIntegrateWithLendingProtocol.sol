@@ -2,14 +2,14 @@ pragma solidity 0.4.26;
 
 import "./token/interfaces/IERC20Token.sol";
 
-import "./openzeppelin-solidity/contracts/math/SafeMath.sol";
-import "./openzeppelin-solidity/contracts/ownership/Ownable.sol";
+import "./utility/SafeMath.sol";
+import "./utility/Owned.sol";
 
 
 /**
  * The BancorPoolIntegrateWithLendingProtocol contract does this and that integrate bancor pool with lending protocol
  */
-contract BancorPoolIntegrateWithLendingProtocol is Ownable {
+contract BancorPoolIntegrateWithLendingProtocol is Owned {
     using SafeMath for uint;
 
     IERC20Token public erc20;
