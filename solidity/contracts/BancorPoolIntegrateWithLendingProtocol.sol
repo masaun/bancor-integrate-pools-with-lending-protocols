@@ -1,9 +1,12 @@
 pragma solidity 0.4.26;
 
 import "./token/interfaces/IERC20Token.sol";
-
 import "./utility/SafeMath.sol";
 import "./utility/Owned.sol";
+
+//@dev - Import curve.fi
+import "./curve/interface/IyDAI.sol";
+
 
 
 /**

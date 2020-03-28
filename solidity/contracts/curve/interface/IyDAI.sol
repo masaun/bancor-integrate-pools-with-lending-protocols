@@ -2,7 +2,6 @@ pragma solidity 0.4.26;
 
 // Solidity Interface - yDAI
 interface IyDAI {
-
     function withdraw(uint256 _shares) external;
     function deposit(uint256 _amount) external;
 
