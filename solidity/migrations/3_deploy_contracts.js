@@ -8,7 +8,7 @@ const BancorFormula = artifacts.require('BancorFormula');
 const BancorGasPriceLimit = artifacts.require('BancorGasPriceLimit');
 const ContractRegistry = artifacts.require('ContractRegistry');
 const ContractFeatures = artifacts.require('ContractFeatures');
-//const TestERC20Token = artifacts.require('TestERC20Token');
+const TestERC20Token = artifacts.require('TestERC20Token');
 const WrappedDai = artifacts.require('WrappedDai');
 //const TestNonStandardERC20Token = artifacts.require('TestNonStandardERC20Token');
 const BancorConverterFactory = artifacts.require('BancorConverterFactory');
@@ -94,17 +94,17 @@ module.exports = function(deployer, network, accounts) {
                         registerContract(instance, 'BANCOR_FORMULA')
                     ));
 
-                    await trystage( deployer.deploy(NonStandardTokenRegistry).then(async (instance) =>
-                        registerContract(instance, 'NON_STANDARD_TOKEN_REGISTRY')
-                    ));
+                    // await trystage( deployer.deploy(NonStandardTokenRegistry).then(async (instance) =>
+                    //     registerContract(instance, 'NON_STANDARD_TOKEN_REGISTRY')
+                    // ));
 
                     await trystage( deployer.deploy(BancorNetwork, contractRegistry.address)
                         .then(async (instance) =>
                             registerContract(instance, 'BANCOR_NETWORK')
                         )
-                        .then(async () =>{
-                            let res = await contracts['BANCOR_NETWORK'].setSignerAddress(accounts[0])
-                        })
+                        // .then(async () =>{
+                        //     let res = await contracts['BANCOR_NETWORK'].setSignerAddress(accounts[0])
+                        // })
                         );
 
                     await trystage( deployer.deploy(BancorConverterFactory).then(async (instance) =>
@@ -128,7 +128,9 @@ module.exports = function(deployer, network, accounts) {
 
                     let smartToken = contracts['SMART_TOKEN'];
 
-                    await trystage( deployer.deploy(WrappedDai, 'Wrapped DAI 2', 'WDAI', 10000000)
+
+                    await trystage( deployer.deploy(TestERC20Token, 'Wrapped DAI 2', 'WDAI', 10000000)
+                    //await trystage( deployer.deploy(WrappedDai, 'Wrapped DAI 2', 'WDAI', 10000000)
                         .then(async (instance) =>
                         {
                             contracts['CONNECTOR_1'] = instance;
