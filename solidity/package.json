@@ -2,13 +2,13 @@
   "name": "",
   "version": "1.0.0",
   "description": "",
-  "main": ".solcover.js",
+  "main": "",
   "directories": {
-    "test": "test"
+    "test": ""
   },
   "scripts": {
     "migrate:dev": "truffle migrate --network development --reset"
   },
   "author": "",
-  "license": "ISC"
+  "license": "MIT"
 }

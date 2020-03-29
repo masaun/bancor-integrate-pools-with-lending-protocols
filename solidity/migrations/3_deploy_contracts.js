@@ -9,7 +9,7 @@ const BancorGasPriceLimit = artifacts.require('BancorGasPriceLimit');
 const ContractRegistry = artifacts.require('ContractRegistry');
 const ContractFeatures = artifacts.require('ContractFeatures');
 const TestERC20Token = artifacts.require('TestERC20Token');
-const WrappedDai = artifacts.require('WrappedDai');
+//åconst WrappedDai = artifacts.require('WrappedDai');
 //const TestNonStandardERC20Token = artifacts.require('TestNonStandardERC20Token');
 const BancorConverterFactory = artifacts.require('BancorConverterFactory');
 const BancorConverterUpgrader = artifacts.require('BancorConverterUpgrader');
@@ -26,7 +26,7 @@ module.exports = function(deployer, network, accounts) {
     const gasPrice = 22000000000;
     const gasPriceBadHigh = 22000000001;
 
-    if (network == "production" || network == "SOKOL" || true) {
+    if (network == "production" || network == "development" || true) {
         deployer.then( async () => {
             let reached = 0;
             let current = 0;
