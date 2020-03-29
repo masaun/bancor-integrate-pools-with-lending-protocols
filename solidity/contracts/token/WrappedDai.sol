@@ -30,9 +30,9 @@ contract WrappedDai is IEtherToken, Owned, ERC20Token, TokenHolder {
     /**
         @dev initializes a new Wrapped DAI, arguments to allow easier versioning during test deployments
     */
-    constructor(string _name, string _symbol)
+    constructor(string _name, string _symbol, uint256 _totalSupply)
     public
-    ERC20Token(_name, _symbol, 18) {
+    ERC20Token(_name, _symbol, 18, _totalSupply) {
     }
 
     /**

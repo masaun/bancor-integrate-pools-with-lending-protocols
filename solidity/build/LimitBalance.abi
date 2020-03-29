@@ -1,1 +1,0 @@
-[{"constant":true,"inputs":[],"name":"limit","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"inputs":[{"name":"_limit","type":"uint256"}],"payable":false,"stateMutability":"nonpayable","type":"constructor"}]

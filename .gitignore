@@ -9,6 +9,7 @@ npm-debug.log
 *.pyc
 
 # npm test 1
+#solidity/build
 solidity/build/contracts
 
 # npm test 2
