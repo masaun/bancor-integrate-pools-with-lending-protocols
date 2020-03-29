@@ -1,5 +1,5 @@
 /* global artifacts */
-const NonStandardTokenRegistry = artifacts.require('NonStandardTokenRegistry');
+//const NonStandardTokenRegistry = artifacts.require('NonStandardTokenRegistry');
 const BancorNetwork = artifacts.require('BancorNetwork');
 const ContractIds = artifacts.require('ContractIds');
 const BancorConverter = artifacts.require('BancorConverter');
@@ -8,7 +8,7 @@ const BancorFormula = artifacts.require('BancorFormula');
 const BancorGasPriceLimit = artifacts.require('BancorGasPriceLimit');
 const ContractRegistry = artifacts.require('ContractRegistry');
 const ContractFeatures = artifacts.require('ContractFeatures');
-const TestERC20Token = artifacts.require('TestERC20Token');
+//const TestERC20Token = artifacts.require('TestERC20Token');
 const WrappedDai = artifacts.require('WrappedDai');
 const TestNonStandardERC20Token = artifacts.require('TestNonStandardERC20Token');
 const BancorConverterFactory = artifacts.require('BancorConverterFactory');
@@ -94,17 +94,18 @@ module.exports = function(deployer, network, accounts) {
                         registerContract(instance, 'BANCOR_FORMULA')
                     ));
 
-                    await trystage( deployer.deploy(NonStandardTokenRegistry).then(async (instance) =>
-                        registerContract(instance, 'NON_STANDARD_TOKEN_REGISTRY')
-                    ));
+                    // await trystage( deployer.deploy(NonStandardTokenRegistry).then(async (instance) =>
+                    //     registerContract(instance, 'NON_STANDARD_TOKEN_REGISTRY')
+                    // ));
 
                     await trystage( deployer.deploy(BancorNetwork, contractRegistry.address)
                         .then(async (instance) =>
                             registerContract(instance, 'BANCOR_NETWORK')
                         )
-                        .then(async () =>{
-                            let res = await contracts['BANCOR_NETWORK'].setSignerAddress(accounts[0])
-                        }));
+                        // .then(async () =>{
+                        //     let res = await contracts['BANCOR_NETWORK'].setSignerAddress(accounts[0])
+                        // })
+                        );
 
                     await trystage( deployer.deploy(BancorConverterFactory).then(async (instance) =>
                         registerContract(instance, 'BANCOR_CONVERTER_FACTORY')
@@ -136,7 +137,7 @@ module.exports = function(deployer, network, accounts) {
                     let connectorToken = contracts['CONNECTOR_1'];
 
                     let weiAmount = Web3Utils.toWei('0.1');
-                    let sendres = await connectorToken.sendTransaction({from: accounts[0], value: weiAmount});
+                    //let sendres = await connectorToken.sendTransaction({from: accounts[0], value: weiAmount});
 
                     await trystage( deployer.deploy(
                         BancorConverter,
