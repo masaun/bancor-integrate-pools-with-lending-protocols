@@ -1,17 +1,17 @@
 pragma solidity 0.4.26;
 
 
-import "./BancorNetwork";
-import "./ContractIds";
-import "./converter/BancorConverter";
-import "./converter/BancorConverterFactory";
-import "./converter/BancorConverterUpgrader";
-import "./converter/BancorFormula";
-import "./utility/ContractRegistry";
-import "./utility/ContractFeatures";
-import "./helpers/TestERC20Token";
-import "./token/SmartToken";
-import "./legacy/BancorGasPriceLimit";
+import "./BancorNetwork.sol";
+import "./ContractIds.sol";
+import "./converter/BancorConverter.sol";
+import "./converter/BancorConverterFactory.sol";
+import "./converter/BancorConverterUpgrader.sol";
+import "./converter/BancorFormula.sol";
+import "./utility/ContractRegistry.sol";
+import "./utility/ContractFeatures.sol";
+import "./helpers/TestERC20Token.sol";
+import "./token/SmartToken.sol";
+import "./legacy/BancorGasPriceLimit.sol";
 
 import "./token/interfaces/IERC20Token.sol";
 import "./utility/SafeMath.sol";
