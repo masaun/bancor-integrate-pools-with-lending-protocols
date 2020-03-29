@@ -1,0 +1,14 @@
+{
+  "name": "",
+  "version": "1.0.0",
+  "description": "",
+  "main": ".solcover.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "migrate:dev": "truffle migrate --network development --reset"
+  },
+  "author": "",
+  "license": "ISC"
+}
