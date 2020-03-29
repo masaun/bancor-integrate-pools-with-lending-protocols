@@ -1,6 +1,6 @@
 pragma solidity 0.4.26;
 
-
+//@dev - Import Bancor
 import "./BancorNetwork.sol";
 import "./ContractIds.sol";
 import "./converter/BancorConverter.sol";
@@ -17,10 +17,10 @@ import "./token/interfaces/IERC20Token.sol";
 import "./utility/SafeMath.sol";
 import "./utility/Owned.sol";
 
-//@dev - Import compound
+//@dev - Import Compound
 import "./compound-protocol/CTokenInterfaces.sol";
 
-//@dev - Import curve.fi
+//@dev - Import Curve.fi
 import "./curve/interface/IyDAI.sol";
 
 
@@ -31,12 +31,50 @@ import "./curve/interface/IyDAI.sol";
 contract BancorPoolIntegrateWithLendingProtocol is Owned {
     using SafeMath for uint;
 
+    BancorNetwork public bancorNetwork;
+    BancorConverter public bancorConverter;
+    BancorConverterFactory public bancorConverterFactory;
+    BancorConverterUpgrader public bancorConverterUpgrader;
+    BancorFormula public bancorFormula;
+    ContractRegistry public contractRegistry;
+    ContractFeatures public contractFeatures;
+    TestERC20Token public testERC20Token;
+    SmartToken public smartToken;
+    BancorGasPriceLimit public bancorGasPriceLimit;
+
     IERC20Token public erc20;
     CErc20Interface public cERC20;
     CTokenInterface public cDAI;
     IyDAI public yDAI;
 
-  	constructor(address _erc20, address _cERC20, address _cToken, address _yDAI) public {
+  	constructor(
+        address _bancorNetwork,
+        address _bancorConverter,
+        address _bancorConverterFactory,
+        address _bancorConverterUpgrader,
+        address _bancorFormula,
+        address _contractRegistry,
+        address _contractFeatures,
+        address _testERC20Token,
+        address _smartToken,
+        address _bancorGasPriceLimit,
+
+        address _erc20, 
+        address _cERC20, 
+        address _cToken, 
+        address _yDAI
+    ) public {
+        bancorNetwork = BancorNetwork(_bancorNetwork);
+        bancorConverter = BancorConverter(_bancorConverter);
+        bancorConverterFactory = BancorConverterFactory(_bancorConverterFactory);
+        bancorConverterUpgrader = BancorConverterUpgrader(_bancorConverterUpgrader);
+        bancorFormula = BancorFormula(_bancorFormula);
+        contractRegistry = ContractRegistry(_contractRegistry);
+        contractFeatures = ContractFeatures(_contractFeatures);
+        testERC20Token = TestERC20Token(_testERC20Token);
+        smartToken = SmartToken(_smartToken);
+        bancorGasPriceLimit = BancorGasPriceLimit(_bancorGasPriceLimit);
+
         erc20 = IERC20Token(_erc20);
         cERC20 = CErc20Interface(_cERC20);
         cDAI = CTokenInterface(_cToken);
