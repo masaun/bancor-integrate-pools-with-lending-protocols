@@ -101,7 +101,7 @@ contract BancorPoolWithLendingProtocol is Owned {
         smartToken.issue(msg.sender, 20000);
 
         //@dev - Step #7: Activation
-        bancorConverter.transfer(bancorConverter_, 5000);
+        testERC20Token.transfer(bancorConverter_, 5000);
         smartToken.transferOwnership(bancorConverter_);
         bancorConverter.acceptTokenOwnership();
         testERC20Token.approve(bancorConverter_, 500000000);
