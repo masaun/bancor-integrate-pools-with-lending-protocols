@@ -64,6 +64,7 @@ contract BancorPoolWithLendingProtocol is Owned {
         //address _cToken, 
         address _yDAI
     ) public {
+        // Step #1: Initial Setup
         bancorNetwork = BancorNetwork(_bancorNetwork);
         bancorConverter = BancorConverter(_bancorConverter);
         bancorConverterFactory = BancorConverterFactory(_bancorConverterFactory);
@@ -97,5 +98,20 @@ contract BancorPoolWithLendingProtocol is Owned {
         // In progress
     }
 
+    
+
+
+    /*********************
+     * Internal Contracts
+     *********************/
+
+    // Step #4: Reserve Definition
+    //function addReserve() internal returns (bool) {}
+    
+    // Step #5: Conversion Fee
+    //function setConversionFee() internal returns (bool) {}
+    
+    // Step #6: Funding & Initial Supply
+    //function issueToPoolToken() internal returns (bool) {}
     
 }
