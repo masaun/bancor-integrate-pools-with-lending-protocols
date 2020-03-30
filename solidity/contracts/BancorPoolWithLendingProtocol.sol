@@ -47,6 +47,11 @@ contract BancorPoolWithLendingProtocol is Owned {
     //CTokenInterface public cDAI;
     IyDAI public yDAI;
 
+    address bancorConverter_;
+    address smartToken_;
+    address erc20_;
+
+
   	constructor(
         address _bancorNetwork,
         address _bancorConverter,
@@ -80,12 +85,30 @@ contract BancorPoolWithLendingProtocol is Owned {
         cERC20 = CErc20Interface(_cERC20);
         //cDAI = CTokenInterface(_cToken);
         yDAI = IyDAI(_yDAI);
+
+        //@dev - Assign contract address
+        bancorConverter_ = _bancorConverter;
+        smartToken_ = _smartToken;
+        erc20_ = _erc20;
   	}
 
     /**
      * @dev - deposit (Add Liguidly) with DAI
      **/
     function deposit(address _contract, uint _amount) public returns (bool) {
+
+        //@dev - Step #6: Funding & Initial Supply
+        smartToken.issue(msg.sender, 20000);
+
+        //@dev - Step #7: Activation
+        bancorConverter.transfer(bancorConverter_, 5000);
+        smartToken.transferOwnership(bancorConverter_);
+        bancorConverter.acceptTokenOwnership();
+        erc20.approve(bancorConverter_, 500000000);
+
+        //@dev - Step #8: Listing & Discovery
+        bancorConverter.convert(smartToken_, erc20_, 500, 1);
+
         // In progress
         erc20.transfer(_contract, _amount);
     }
