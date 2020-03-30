@@ -49,7 +49,7 @@ contract BancorPoolWithLendingProtocol is Owned {
 
     address bancorConverter_;
     address smartToken_;
-    address erc20_;
+    address testERC20Token_;
 
 
   	constructor(
@@ -89,7 +89,7 @@ contract BancorPoolWithLendingProtocol is Owned {
         //@dev - Assign contract address
         bancorConverter_ = _bancorConverter;
         smartToken_ = _smartToken;
-        erc20_ = _erc20;
+        testERC20Token_ = _testERC20Token;
   	}
 
     /**
@@ -104,10 +104,10 @@ contract BancorPoolWithLendingProtocol is Owned {
         bancorConverter.transfer(bancorConverter_, 5000);
         smartToken.transferOwnership(bancorConverter_);
         bancorConverter.acceptTokenOwnership();
-        erc20.approve(bancorConverter_, 500000000);
+        testERC20Token.approve(bancorConverter_, 500000000);
 
         //@dev - Step #8: Listing & Discovery
-        bancorConverter.convert(smartToken_, erc20_, 500, 1);
+        bancorConverter.convert(smartToken_, testERC20Token_, 500, 1);
 
         // In progress
         erc20.transfer(_contract, _amount);
