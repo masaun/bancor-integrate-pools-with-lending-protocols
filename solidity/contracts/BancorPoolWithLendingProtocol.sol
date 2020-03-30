@@ -44,7 +44,7 @@ contract BancorPoolWithLendingProtocol is Owned {
 
     IERC20Token public erc20;
     CErc20Interface public cERC20;
-    CTokenInterface public cDAI;
+    //CTokenInterface public cDAI;
     IyDAI public yDAI;
 
   	constructor(
@@ -61,7 +61,7 @@ contract BancorPoolWithLendingProtocol is Owned {
 
         address _erc20, 
         address _cERC20, 
-        address _cToken, 
+        //address _cToken, 
         address _yDAI
     ) public {
         bancorNetwork = BancorNetwork(_bancorNetwork);
@@ -77,7 +77,7 @@ contract BancorPoolWithLendingProtocol is Owned {
 
         erc20 = IERC20Token(_erc20);
         cERC20 = CErc20Interface(_cERC20);
-        cDAI = CTokenInterface(_cToken);
+        //cDAI = CTokenInterface(_cToken);
         yDAI = IyDAI(_yDAI);
   	}
 

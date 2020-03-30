@@ -23,9 +23,9 @@ var _testERC20Token = TestERC20Token.address;
 var _smartToken = SmartToken.address;
 var _bancorGasPriceLimit = BancorGasPriceLimit.address;
 
-var _erc20 = "";
-var _cERC20 = "";
-var _cToken = "0x6CE27497A64fFFb5517AA4aeE908b1E7EB63B9fF";  // cDAI on Ropsten
+var _erc20 = "0xaD6D458402F60fD3Bd25163575031ACDce07538D";   // DAI on Ropsten
+var _cERC20 = "0x6CE27497A64fFFb5517AA4aeE908b1E7EB63B9fF";  // cDAI on Ropsten
+//var _cToken = "0x6CE27497A64fFFb5517AA4aeE908b1E7EB63B9fF";
 var _yDAI = "0x9D25057e62939D3408406975aD75Ffe834DA4cDd";
 
 
@@ -43,6 +43,6 @@ module.exports = async function(deployer) {
                           _bancorGasPriceLimit,
                           _erc20, 
                           _cERC20, 
-                          _cToken, 
+                          //_cToken, 
                           _yDAI);
 };
