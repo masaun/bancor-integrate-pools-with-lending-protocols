@@ -26,9 +26,9 @@ import "./curve/interface/IyDAI.sol";
 
 
 /**
- * The BancorPoolIntegrateWithLendingProtocol contract does this and that integrate bancor pool with lending protocol
+ * The BancorPoolWithLendingProtocol contract does this and that integrate bancor pool with lending protocol
  */
-contract BancorPoolIntegrateWithLendingProtocol is Owned {
+contract BancorPoolWithLendingProtocol is Owned {
     using SafeMath for uint;
 
     BancorNetwork public bancorNetwork;
