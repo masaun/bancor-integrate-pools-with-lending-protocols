@@ -19,11 +19,11 @@ const BancorConverterUpgrader = artifacts.require('BancorConverterUpgrader');
 
 
 contract('BancorPoolWithLendingProtocol', accounts => {
-    before(async () => {
+    it('Testing BancorPoolWithLendingProtocol.sol', async () => {
         //@dev - Create instance of BancorPoolWithLendingProtocol contract
         let bancorPoolWithLendingProtocol = await BancorPoolWithLendingProtocol.new();
 
         console.log("=== Test ===");
     });
-}
+});
 
