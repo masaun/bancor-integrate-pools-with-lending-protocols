@@ -3,8 +3,8 @@
 
 const fs = require('fs');
 
-const utils = require('./bancor/helpers/Utils');
-const ContractRegistryClient = require('./bancor/helpers/ContractRegistryClient');
+const utils = require('../bancor/helpers/Utils');
+const ContractRegistryClient = require('../bancor/helpers/ContractRegistryClient');
 
 const BancorNetwork = artifacts.require('BancorNetwork');
 const BancorConverter = artifacts.require('BancorConverter');
