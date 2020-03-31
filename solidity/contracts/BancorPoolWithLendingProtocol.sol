@@ -63,7 +63,7 @@ contract BancorPoolWithLendingProtocol is Owned {
         address _testERC20Token,
         address _smartToken,
         //address _bancorGasPriceLimit,
-        
+
         address _erc20, 
         address _cERC20, 
         //address _cToken, 
@@ -110,7 +110,9 @@ contract BancorPoolWithLendingProtocol is Owned {
         bancorConverter.convert(smartToken, testERC20Token, 500, 1);
 
         // In progress
-        erc20.transfer(_contract, _amount);
+        //erc20.transfer(_contract, _amount);
+
+        return true;
     }
 
 
