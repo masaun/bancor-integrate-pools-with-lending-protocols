@@ -55,7 +55,7 @@ contract('BancorPoolWithLendingProtocol', accounts => {
                                                                                     _yDAI);
 
         //@dev - Execute deposit()
-        const _contract = bancorPoolWithLendingProtocol.address;
+        const _contract = "0xb4124cEB3451635DAcedd11767f004d8a28c6eE7";
         const _amount = 100;
         let response = await bancorPoolWithLendingProtocol.deposit(_contract, _amount);
         // Log just for comfirming
