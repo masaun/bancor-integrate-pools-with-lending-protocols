@@ -3,8 +3,8 @@
 
 const fs = require('fs');
 
-const utils = require('./helpers/Utils');
-const ContractRegistryClient = require('./helpers/ContractRegistryClient');
+const utils = require('../helpers/Utils');
+const ContractRegistryClient = require('../helpers/ContractRegistryClient');
 
 const BancorNetwork = artifacts.require('BancorNetwork');
 const BancorConverter = artifacts.require('BancorConverter');
@@ -16,6 +16,9 @@ const ERC20Token = artifacts.require('ERC20Token');
 const TestNonStandardERC20Token = artifacts.require('TestNonStandardERC20Token');
 const BancorConverterFactory = artifacts.require('BancorConverterFactory');
 const BancorConverterUpgrader = artifacts.require('BancorConverterUpgrader');
+
+//@dev - Call artifact file of BancorPoolWithLendingProtocol.sol
+const BancorPoolWithLendingProtocol = artifacts.require('BancorPoolWithLendingProtocol');
 
 
 contract('BancorPoolWithLendingProtocol', accounts => {
