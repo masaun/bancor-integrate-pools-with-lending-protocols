@@ -18,7 +18,7 @@ import "./bancor/utility/SafeMath.sol";
 import "./bancor/utility/Owned.sol";
 
 //@dev - Import Compound
-import "./compound-protocol/CTokenInterfaces.sol";
+import "./compound/CTokenInterfaces.sol";
 
 //@dev - Import Curve.fi
 import "./curve/interface/IyDAI.sol";
