@@ -90,6 +90,19 @@ contract BancorPoolWithLendingProtocol is Owned {
         bancorConverter_ = _bancorConverter;
         smartToken_ = _smartToken;
         testERC20Token_ = _testERC20Token;
+
+
+        //@dev - Step #6: Funding & Initial Supply
+        // smartToken.issue(msg.sender, 20000);
+
+        //@dev - Step #7: Activation
+        // testERC20Token.transfer(bancorConverter_, 5000);
+        // smartToken.transferOwnership(bancorConverter_);
+        // bancorConverter.acceptTokenOwnership();
+        // testERC20Token.approve(bancorConverter_, 500000000);
+
+        //@dev - Step #8: Listing & Discovery
+        // bancorConverter.convert(smartToken, testERC20Token, 500, 1);
   	}
 
     /**
@@ -98,7 +111,7 @@ contract BancorPoolWithLendingProtocol is Owned {
     function deposit(address _contract, uint _amount) public returns (bool) {
 
         //@dev - Step #6: Funding & Initial Supply
-        // smartToken.issue(msg.sender, 20000);
+        // smartToken.issue(_contract, 20000);
 
         //@dev - Step #7: Activation
         // testERC20Token.transfer(bancorConverter_, 5000);

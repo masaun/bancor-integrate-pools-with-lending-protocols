@@ -45,4 +45,47 @@ module.exports = async function(deployer) {
                           _cERC20, 
                           //_cToken, 
                           _yDAI);
+
+
+    let contracts = {};
+
+    let converter = contracts['CONVERTER'];
+
+    //@dev - Step #6: Funding & Initial Supply
+    let ir = await smartToken.issue(accounts[0], 20000);
+    // console.log('ir res', ir);
+
+    //@dev - Step #7: Activation
+    let tr = await contracts['CONNECTOR_1'].transfer(converter.address, 5000);
+    // console.log('tr res', tr);
+
+    //@dev - Step #7: Activation
+    let t0r = await smartToken.transferOwnership(converter.address);
+    // console.log('t0r res', t0r);
+
+    //@dev - Step #7: Activation
+    let a0r = await converter.acceptTokenOwnership();
+    // console.log('a0r res', a0r);
+
+    let approveRes = await connectorToken.approve(converter.address, 500000000);
+
+    console.log('approveRes', approveRes);
+
+    //@dev - Step #8: Listing & Discovery
+    let purchaseRes = await converter.convert(smartToken.address, connectorToken.address, 500, 1);
+
+    console.log('purchaseRes', purchaseRes);
+
+    let purchaseAmount1 = getConversionAmount(purchaseRes);
+
+    console.log('purchase amount 1', purchaseAmount1)
+
+    let purchaseRes2 = await converter.convert(smartToken.address, connectorToken.address, 700, 1);
+
+    console.log('purchaseRes2', purchaseRes2);
+
+    let purchaseRes3 = await converter.convert(connectorToken.address, smartToken.address, 200, 1);
+
+    console.log('purchaseRes3', purchaseRes3);
+
 };
