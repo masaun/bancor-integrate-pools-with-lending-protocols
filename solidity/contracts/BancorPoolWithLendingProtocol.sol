@@ -1,21 +1,21 @@
 pragma solidity 0.4.26;
 
 //@dev - Import Bancor
-import "./BancorNetwork.sol";
-import "./ContractIds.sol";
-import "./converter/BancorConverter.sol";
-import "./converter/BancorConverterFactory.sol";
-import "./converter/BancorConverterUpgrader.sol";
-import "./converter/BancorFormula.sol";
-import "./utility/ContractRegistry.sol";
-import "./utility/ContractFeatures.sol";
-import "./helpers/TestERC20Token.sol";
-import "./token/SmartToken.sol";
-import "./legacy/BancorGasPriceLimit.sol";
+import "./bancor/BancorNetwork.sol";
+import "./bancor/ContractIds.sol";
+import "./bancor/converter/BancorConverter.sol";
+import "./bancor/converter/BancorConverterFactory.sol";
+import "./bancor/converter/BancorConverterUpgrader.sol";
+import "./bancor/converter/BancorFormula.sol";
+import "./bancor/utility/ContractRegistry.sol";
+import "./bancor/utility/ContractFeatures.sol";
+import "./bancor/helpers/TestERC20Token.sol";
+import "./bancor/token/SmartToken.sol";
+import "./bancor/legacy/BancorGasPriceLimit.sol";
 
-import "./token/interfaces/IERC20Token.sol";
-import "./utility/SafeMath.sol";
-import "./utility/Owned.sol";
+import "./bancor/token/interfaces/IERC20Token.sol";
+import "./bancor/utility/SafeMath.sol";
+import "./bancor/utility/Owned.sol";
 
 //@dev - Import Compound
 import "./compound-protocol/CTokenInterfaces.sol";
