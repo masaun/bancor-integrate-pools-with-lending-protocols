@@ -7,7 +7,7 @@
     "test": ""
   },
   "scripts": {
-    "test:dev": "truffle test ./test/testBancorPoolWithLendingProtocol --network development",
+    "test:dev": "truffle test ./test/testBancorPoolWithLendingProtocol/* --network development",
     "migrate:dev": "truffle migrate --network development --reset"
   },
   "author": "",

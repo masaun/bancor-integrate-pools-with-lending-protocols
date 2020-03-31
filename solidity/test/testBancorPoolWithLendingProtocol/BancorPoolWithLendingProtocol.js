@@ -22,6 +22,8 @@ contract('BancorPoolWithLendingProtocol', accounts => {
     before(async () => {
         //@dev - Create instance of BancorPoolWithLendingProtocol contract
         let bancorPoolWithLendingProtocol = await BancorPoolWithLendingProtocol.new();
+
+        console.log("=== Test ===");
     });
 }
 

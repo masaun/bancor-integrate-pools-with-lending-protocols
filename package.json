@@ -18,7 +18,7 @@
     "snyk-protect": "snyk protect",
     "prepare": "npm run snyk-protect",
     
-    "test:dev": "cd solidity && truffle test ./test/testBancorPoolWithLendingProtocol --network development",
+    "test:dev": "cd solidity && truffle test ./test/testBancorPoolWithLendingProtocol/* --network development",
     "migrate:dev": "cd solidity && truffle migrate --network development --reset"
   },
   "dependencies": {
