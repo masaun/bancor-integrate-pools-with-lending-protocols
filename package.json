@@ -16,7 +16,10 @@
     "verify": "node scripts/verify-all.js",
     "flatten": "node scripts/flatten.js",
     "snyk-protect": "snyk protect",
-    "prepare": "npm run snyk-protect"
+    "prepare": "npm run snyk-protect",
+    
+    "test:dev": "cd solidity && truffle test ./test/testBancorPoolWithLendingProtocol --network development",
+    "migrate:dev": "cd solidity && truffle migrate --network development --reset"
   },
   "dependencies": {
     "decimal.js": "10.2.0",

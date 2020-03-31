@@ -47,6 +47,11 @@ contract BancorPoolWithLendingProtocol is Owned {
     //CTokenInterface public cDAI;
     IyDAI public yDAI;
 
+    address bancorConverter_;
+    address smartToken_;
+    address testERC20Token_;
+
+
   	constructor(
         address _bancorNetwork,
         address _bancorConverter,
@@ -64,6 +69,7 @@ contract BancorPoolWithLendingProtocol is Owned {
         //address _cToken, 
         address _yDAI
     ) public {
+        // Step #1: Initial Setup
         bancorNetwork = BancorNetwork(_bancorNetwork);
         bancorConverter = BancorConverter(_bancorConverter);
         bancorConverterFactory = BancorConverterFactory(_bancorConverterFactory);
@@ -79,12 +85,30 @@ contract BancorPoolWithLendingProtocol is Owned {
         cERC20 = CErc20Interface(_cERC20);
         //cDAI = CTokenInterface(_cToken);
         yDAI = IyDAI(_yDAI);
+
+        //@dev - Assign contract address
+        bancorConverter_ = _bancorConverter;
+        smartToken_ = _smartToken;
+        testERC20Token_ = _testERC20Token;
   	}
 
     /**
      * @dev - deposit (Add Liguidly) with DAI
      **/
     function deposit(address _contract, uint _amount) public returns (bool) {
+
+        //@dev - Step #6: Funding & Initial Supply
+        smartToken.issue(msg.sender, 20000);
+
+        //@dev - Step #7: Activation
+        testERC20Token.transfer(bancorConverter_, 5000);
+        smartToken.transferOwnership(bancorConverter_);
+        bancorConverter.acceptTokenOwnership();
+        testERC20Token.approve(bancorConverter_, 500000000);
+
+        //@dev - Step #8: Listing & Discovery
+        bancorConverter.convert(smartToken, testERC20Token, 500, 1);
+
         // In progress
         erc20.transfer(_contract, _amount);
     }
@@ -97,5 +121,20 @@ contract BancorPoolWithLendingProtocol is Owned {
         // In progress
     }
 
+    
+
+
+    /*********************
+     * Internal Contracts
+     *********************/
+
+    // Step #4: Reserve Definition
+    //function addReserve() internal returns (bool) {}
+    
+    // Step #5: Conversion Fee
+    //function setConversionFee() internal returns (bool) {}
+    
+    // Step #6: Funding & Initial Supply
+    //function issueToPoolToken() internal returns (bool) {}
     
 }

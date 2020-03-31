@@ -120,6 +120,7 @@ module.exports = function(deployer, network, accounts) {
                     await contractRegistry.registerAddress(bancorXId, accounts[0]);
 
 
+                    //@dev - Step #2: Pool Token Deployment
                     await trystage( deployer.deploy(SmartToken, 'SMART20', 'SM20', 2)
                         .then(async (instance) =>
                         {
@@ -141,6 +142,7 @@ module.exports = function(deployer, network, accounts) {
                     let weiAmount = Web3Utils.toWei('0.1');
                     //let sendres = await connectorToken.sendTransaction({from: accounts[0], value: weiAmount});
 
+                    //@dev - Step #3: Converter Deployment
                     await trystage( deployer.deploy(
                         BancorConverter,
                         smartToken.address, contractRegistry.address, 30000, contracts['CONNECTOR_1'].address, 250000
@@ -150,15 +152,19 @@ module.exports = function(deployer, network, accounts) {
 
                     let converter = contracts['CONVERTER'];
 
+                    //@dev - Step #6: Funding & Initial Supply
                     let ir = await smartToken.issue(accounts[0], 20000);
                     // console.log('ir res', ir);
 
+                    //@dev - Step #7: Activation
                     let tr = await contracts['CONNECTOR_1'].transfer(converter.address, 5000);
                     // console.log('tr res', tr);
 
+                    //@dev - Step #7: Activation
                     let t0r = await smartToken.transferOwnership(converter.address);
                     // console.log('t0r res', t0r);
 
+                    //@dev - Step #7: Activation
                     let a0r = await converter.acceptTokenOwnership();
                     // console.log('a0r res', a0r);
 
@@ -166,6 +172,7 @@ module.exports = function(deployer, network, accounts) {
 
                     console.log('approveRes', approveRes);
 
+                    //@dev - Step #8: Listing & Discovery
                     let purchaseRes = await converter.convert(smartToken.address, connectorToken.address, 500, 1);
 
                     console.log('purchaseRes', purchaseRes);

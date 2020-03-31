@@ -3,7 +3,8 @@ module.exports = {
     networks: {
         development: {
             host:       "localhost",
-            port:       7545,
+            //port:       7545,      // Ganache-GUI
+            port:       8545,        // Ganache-CLI
             network_id: "*",         // Match any network id
             gasPrice:   20000000000, // Gas price used for deploys
             gas:        6721975      // Gas limit used for deploys
