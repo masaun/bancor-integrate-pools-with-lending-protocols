@@ -40,7 +40,7 @@ contract BancorPoolWithLendingProtocol is Owned {
     ContractFeatures public contractFeatures;
     TestERC20Token public testERC20Token;
     SmartToken public smartToken;
-    BancorGasPriceLimit public bancorGasPriceLimit;
+    //BancorGasPriceLimit public bancorGasPriceLimit;
 
     IERC20Token public erc20;
     CErc20Interface public cERC20;
@@ -62,8 +62,8 @@ contract BancorPoolWithLendingProtocol is Owned {
         address _contractFeatures,
         address _testERC20Token,
         address _smartToken,
-        address _bancorGasPriceLimit,
-
+        //address _bancorGasPriceLimit,
+        
         address _erc20, 
         address _cERC20, 
         //address _cToken, 
@@ -79,7 +79,7 @@ contract BancorPoolWithLendingProtocol is Owned {
         contractFeatures = ContractFeatures(_contractFeatures);
         testERC20Token = TestERC20Token(_testERC20Token);
         smartToken = SmartToken(_smartToken);
-        bancorGasPriceLimit = BancorGasPriceLimit(_bancorGasPriceLimit);
+        //bancorGasPriceLimit = BancorGasPriceLimit(_bancorGasPriceLimit);
 
         erc20 = IERC20Token(_erc20);
         cERC20 = CErc20Interface(_cERC20);

@@ -5,7 +5,7 @@ const ContractIds = artifacts.require('ContractIds');
 const BancorConverter = artifacts.require('BancorConverter');
 const SmartToken = artifacts.require('SmartToken');
 const BancorFormula = artifacts.require('BancorFormula');
-const BancorGasPriceLimit = artifacts.require('BancorGasPriceLimit');
+//const BancorGasPriceLimit = artifacts.require('BancorGasPriceLimit');
 const ContractRegistry = artifacts.require('ContractRegistry');
 const ContractFeatures = artifacts.require('ContractFeatures');
 const TestERC20Token = artifacts.require('TestERC20Token');
@@ -21,7 +21,7 @@ var _contractRegistry = ContractRegistry.address;
 var _contractFeatures = ContractFeatures.address;
 var _testERC20Token = TestERC20Token.address;
 var _smartToken = SmartToken.address;
-var _bancorGasPriceLimit = BancorGasPriceLimit.address;
+//var _bancorGasPriceLimit = BancorGasPriceLimit.address;
 
 var _erc20 = "0xaD6D458402F60fD3Bd25163575031ACDce07538D";   // DAI on Ropsten
 var _cERC20 = "0x6CE27497A64fFFb5517AA4aeE908b1E7EB63B9fF";  // cDAI on Ropsten
@@ -40,7 +40,7 @@ module.exports = async function(deployer) {
                           _contractFeatures,
                           _testERC20Token,
                           _smartToken,
-                          _bancorGasPriceLimit,
+                          //_bancorGasPriceLimit,
                           _erc20, 
                           _cERC20, 
                           //_cToken, 
