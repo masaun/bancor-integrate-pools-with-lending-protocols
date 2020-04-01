@@ -60,6 +60,7 @@ module.exports = async function(deployer, network, accounts) {
                           _yDAI);
 
     //@dev - Create instance of contract
+    let bancorConverter = await BancorConverter.new(_testERC20Token, _contractRegistry, 0, '0x0', 0);
     let smartToken = await SmartToken.new('Token1', 'TKN1', 18);
     let connectorToken = await TestERC20Token.new('Wrapped DAI 2', 'WDAI', 10000000);
 
@@ -87,23 +88,23 @@ module.exports = async function(deployer, network, accounts) {
             console.log('=== t0r res ===', t0r);
 
             //@dev - Step #7: Activation
-            let a0r = await BancorConverter.acceptTokenOwnership();
+            let a0r = await bancorConverter.acceptTokenOwnership();
             console.log('=== a0r res ===', a0r);
 
-            let approveRes = await connectorToken.approve(BancorConverter, 500000000);
+            let approveRes = await connectorToken.approve(bancorConverter, 500000000);
             console.log('approveRes', approveRes);
 
             //@dev - Step #8: Listing & Discovery
-            let purchaseRes = await BancorConverter.convert(smartToken, connectorToken.address, 500, 1);
+            let purchaseRes = await bancorConverter.convert(smartToken, connectorToken.address, 500, 1);
             console.log('purchaseRes', purchaseRes);
 
             let purchaseAmount1 = getConversionAmount(purchaseRes);
             console.log('purchase amount 1', purchaseAmount1);
 
-            let purchaseRes2 = await BancorConverter.convert(_smartToken, connectorToken.address, 700, 1);
+            let purchaseRes2 = await bancorConverter.convert(_smartToken, connectorToken.address, 700, 1);
             console.log('purchaseRes2', purchaseRes2);
 
-            let purchaseRes3 = await BancorConverter.convert(connectorToken.address, _smartToken, 200, 1);
+            let purchaseRes3 = await bancorConverter .convert(connectorToken.address, _smartToken, 200, 1);
             console.log('purchaseRes3', purchaseRes3);
 
         })
