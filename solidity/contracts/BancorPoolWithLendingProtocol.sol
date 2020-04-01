@@ -1,24 +1,24 @@
 pragma solidity 0.4.26;
 
 //@dev - Import Bancor
-import "./BancorNetwork.sol";
-import "./ContractIds.sol";
-import "./converter/BancorConverter.sol";
-import "./converter/BancorConverterFactory.sol";
-import "./converter/BancorConverterUpgrader.sol";
-import "./converter/BancorFormula.sol";
-import "./utility/ContractRegistry.sol";
-import "./utility/ContractFeatures.sol";
-import "./helpers/TestERC20Token.sol";
-import "./token/SmartToken.sol";
-import "./legacy/BancorGasPriceLimit.sol";
+import "./bancor/BancorNetwork.sol";
+import "./bancor/ContractIds.sol";
+import "./bancor/converter/BancorConverter.sol";
+import "./bancor/converter/BancorConverterFactory.sol";
+import "./bancor/converter/BancorConverterUpgrader.sol";
+import "./bancor/converter/BancorFormula.sol";
+import "./bancor/utility/ContractRegistry.sol";
+import "./bancor/utility/ContractFeatures.sol";
+import "./bancor/helpers/TestERC20Token.sol";
+import "./bancor/token/SmartToken.sol";
+//import "./bancor/legacy/BancorGasPriceLimit.sol";
 
-import "./token/interfaces/IERC20Token.sol";
-import "./utility/SafeMath.sol";
-import "./utility/Owned.sol";
+import "./bancor/token/interfaces/IERC20Token.sol";
+import "./bancor/utility/SafeMath.sol";
+import "./bancor/utility/Owned.sol";
 
 //@dev - Import Compound
-import "./compound-protocol/CTokenInterfaces.sol";
+import "./compound/CTokenInterfaces.sol";
 
 //@dev - Import Curve.fi
 import "./curve/interface/IyDAI.sol";
@@ -40,7 +40,7 @@ contract BancorPoolWithLendingProtocol is Owned {
     ContractFeatures public contractFeatures;
     TestERC20Token public testERC20Token;
     SmartToken public smartToken;
-    BancorGasPriceLimit public bancorGasPriceLimit;
+    //BancorGasPriceLimit public bancorGasPriceLimit;
 
     IERC20Token public erc20;
     CErc20Interface public cERC20;
@@ -62,7 +62,7 @@ contract BancorPoolWithLendingProtocol is Owned {
         address _contractFeatures,
         address _testERC20Token,
         address _smartToken,
-        address _bancorGasPriceLimit,
+        //address _bancorGasPriceLimit,
 
         address _erc20, 
         address _cERC20, 
@@ -79,7 +79,7 @@ contract BancorPoolWithLendingProtocol is Owned {
         contractFeatures = ContractFeatures(_contractFeatures);
         testERC20Token = TestERC20Token(_testERC20Token);
         smartToken = SmartToken(_smartToken);
-        bancorGasPriceLimit = BancorGasPriceLimit(_bancorGasPriceLimit);
+        //bancorGasPriceLimit = BancorGasPriceLimit(_bancorGasPriceLimit);
 
         erc20 = IERC20Token(_erc20);
         cERC20 = CErc20Interface(_cERC20);
@@ -90,6 +90,19 @@ contract BancorPoolWithLendingProtocol is Owned {
         bancorConverter_ = _bancorConverter;
         smartToken_ = _smartToken;
         testERC20Token_ = _testERC20Token;
+
+
+        //@dev - Step #6: Funding & Initial Supply
+        // smartToken.issue(msg.sender, 20000);
+
+        //@dev - Step #7: Activation
+        // testERC20Token.transfer(bancorConverter_, 5000);
+        // smartToken.transferOwnership(bancorConverter_);
+        // bancorConverter.acceptTokenOwnership();
+        // testERC20Token.approve(bancorConverter_, 500000000);
+
+        //@dev - Step #8: Listing & Discovery
+        // bancorConverter.convert(smartToken, testERC20Token, 500, 1);
   	}
 
     /**
@@ -98,19 +111,21 @@ contract BancorPoolWithLendingProtocol is Owned {
     function deposit(address _contract, uint _amount) public returns (bool) {
 
         //@dev - Step #6: Funding & Initial Supply
-        smartToken.issue(msg.sender, 20000);
+        // smartToken.issue(_contract, 20000);
 
         //@dev - Step #7: Activation
-        testERC20Token.transfer(bancorConverter_, 5000);
-        smartToken.transferOwnership(bancorConverter_);
-        bancorConverter.acceptTokenOwnership();
-        testERC20Token.approve(bancorConverter_, 500000000);
+        // testERC20Token.transfer(bancorConverter_, 5000);
+        // smartToken.transferOwnership(bancorConverter_);
+        // bancorConverter.acceptTokenOwnership();
+        // testERC20Token.approve(bancorConverter_, 500000000);
 
         //@dev - Step #8: Listing & Discovery
-        bancorConverter.convert(smartToken, testERC20Token, 500, 1);
+        // bancorConverter.convert(smartToken, testERC20Token, 500, 1);
 
         // In progress
-        erc20.transfer(_contract, _amount);
+        //erc20.transfer(_contract, _amount);
+
+        return true;
     }
 
 
