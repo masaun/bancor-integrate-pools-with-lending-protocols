@@ -8,6 +8,7 @@
   },
   "scripts": {
     "test:dev": "truffle test ./test/testBancorPoolWithLendingProtocol/* --network development",
+    "compile:dev": "truffle compile --network development --reset",
     "migrate:dev": "truffle migrate --network development --reset"
   },
   "author": "",

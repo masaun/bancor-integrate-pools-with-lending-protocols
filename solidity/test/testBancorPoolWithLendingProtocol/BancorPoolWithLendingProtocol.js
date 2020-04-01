@@ -64,6 +64,45 @@ contract('BancorPoolWithLendingProtocol', accounts => {
     });
 
 
+    it('Used by purchase/sale tests', async (accounts, activate, maxConversionFee = 0) => {
+        const ratio10Percent = 100000;
+
+        let token;
+        let tokenAddress;
+        let contractRegistry;
+        let contractFeatures;
+        let reserveToken;
+        let reserveToken2;
+        let reserveToken3;
+        let upgrader;
+
+        // used by purchase/sale tests
+        token = await SmartToken.new('Token1', 'TKN1', 2);
+        tokenAddress = token.address;
+
+        let converter = await BancorConverter.new(
+            tokenAddress,
+            contractRegistry.address,
+            maxConversionFee,
+            reserveToken.address,
+            250000
+        );
+        let converterAddress = converter.address;
+        await converter.addReserve(reserveToken2.address, 150000);
+
+        await token.issue(accounts[0], 20000);
+        await reserveToken.transfer(converterAddress, 5000);
+        await reserveToken2.transfer(converterAddress, 8000);
+
+        if (activate) {
+            await token.transferOwnership(converterAddress);
+            await converter.acceptTokenOwnership();
+        }
+
+        return converter;
+    });
+
+
     // it('Testing addReserve cDAI and create cDAIBNT of PoolToken', async () => {
     //     //@dev - Define assigned value in constructor of BancorPoolWithLendingProtocol.sol
     //     const _bancorNetwork = BancorNetwork.address;

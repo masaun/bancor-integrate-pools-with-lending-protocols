@@ -11,7 +11,7 @@ import "./bancor/utility/ContractRegistry.sol";
 import "./bancor/utility/ContractFeatures.sol";
 import "./bancor/helpers/TestERC20Token.sol";
 import "./bancor/token/SmartToken.sol";
-import "./bancor/legacy/BancorGasPriceLimit.sol";
+//import "./bancor/legacy/BancorGasPriceLimit.sol";
 
 import "./bancor/token/interfaces/IERC20Token.sol";
 import "./bancor/utility/SafeMath.sol";
