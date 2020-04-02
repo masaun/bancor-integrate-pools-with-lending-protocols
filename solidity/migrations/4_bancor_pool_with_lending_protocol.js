@@ -62,7 +62,7 @@ module.exports = async function(deployer, network, accounts) {
     console.log('\n=== accounts ===\n', accounts);
 
     //@dev - Create instance of contract
-    let bancorConverter = await BancorConverter.new(_smartToken, _contractRegistry, 30000, _erc20, 250000);
+    let bancorConverter = await BancorConverter.new(_smartToken, _contractRegistry, 30000, _testERC20Token, 250000);
     let smartToken = await SmartToken.new('Token1', 'TKN1', 18);
     let connectorToken = await TestERC20Token.new('Wrapped DAI 2', 'WDAI', 10000000);
 
