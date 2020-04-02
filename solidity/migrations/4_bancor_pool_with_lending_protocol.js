@@ -65,13 +65,10 @@ module.exports = async function(deployer, network, accounts) {
     let bancorConverter = await BancorConverter.new(_smartToken, _contractRegistry, 300000, _erc20, 200000);
     let smartToken = await SmartToken.new('Token1', 'TKN1', 18);
     let connectorToken = await TestERC20Token.new('Wrapped DAI 2', 'WDAI', 10000000);
-    console.log('=== connectorToken ===', connectorToken);
 
     //@dev - Test
     let weiAmount = Web3Utils.toWei('0.1');
-    console.log('=== weiAmount ===', weiAmount);   
-    let sendres = await connectorToken.sendTransaction({from: accounts[0], value: weiAmount});
-    console.log('=== sendres ===', sendres);    
+    console.log('=== weiAmount ===', weiAmount);
 
     //@dev - Step #6: Funding & Initial Supply
     let ir = await smartToken.issue(accounts[0], 20000);
