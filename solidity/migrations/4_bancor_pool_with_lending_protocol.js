@@ -59,7 +59,7 @@ module.exports = async function(deployer, network, accounts) {
                           //_cToken, 
                           _yDAI);
 
-    console.log('=== accounts ===\n', accounts);
+    console.log('\n=== accounts ===\n', accounts);
 
     //@dev - Create instance of contract
     let bancorConverter = await BancorConverter.new(_smartToken, _contractRegistry, 30000, _erc20, 250000);
@@ -68,39 +68,39 @@ module.exports = async function(deployer, network, accounts) {
 
     //@dev - Test
     let weiAmount = Web3Utils.toWei('0.1');
-    console.log('=== weiAmount ===\n', weiAmount);
+    console.log('\n=== weiAmount ===\n', weiAmount);
 
     //@dev - Step #6: Funding & Initial Supply
     let ir = await smartToken.issue(accounts[0], 20000);
-    console.log('=== ir res ===\n', ir);
+    console.log('\n=== ir res ===\n', ir);
 
     //@dev - Step #7: Activation
     let tr = await connectorToken.transfer(_bancorConverter, 5000);
-    console.log('=== tr res ===\n', tr);
+    console.log('\n=== tr res ===\n', tr);
 
     //@dev - Step #7: Activation
     let t0r = await smartToken.transferOwnership(_bancorConverter);
-    console.log('=== t0r res ===\n', t0r);
+    console.log('\n=== t0r res ===\n', t0r);
 
     //@dev - Step #7: Activation
-    //let a0r = await bancorConverter.acceptTokenOwnership();
-    //console.log('=== a0r res ===\n', a0r);
+    let a0r = await bancorConverter.acceptTokenOwnership();
+    console.log('\n=== a0r res ===\n', a0r);
 
     let approveRes = await connectorToken.approve(_bancorConverter, 500000000);
-    console.log('=== approveRes ===\n', approveRes);
+    console.log('\n=== approveRes ===\n', approveRes);
 
     //@dev - Step #8: Listing & Discovery
     let purchaseRes = await bancorConverter.convert(_smartToken, connectorToken.address, 500, 1);
-    console.log('=== purchaseRes ===\n', purchaseRes);
+    console.log('\n=== purchaseRes ===\n', purchaseRes);
 
     let purchaseAmount1 = getConversionAmount(purchaseRes);
-    console.log('=== purchase amount 1 ===\n', purchaseAmount1);
+    console.log('\n=== purchase amount 1 ===\n', purchaseAmount1);
 
     let purchaseRes2 = await bancorConverter.convert(_smartToken, connectorToken.address, 700, 1);
-    console.log('=== purchaseRes2 ===\n', purchaseRes2);
+    console.log('\n=== purchaseRes2 ===\n', purchaseRes2);
 
     let purchaseRes3 = await bancorConverter .convert(connectorToken.address, _smartToken, 200, 1);
-    console.log('=== purchaseRes3 ===\n', purchaseRes3);
+    console.log('\n=== purchaseRes3 ===\n', purchaseRes3);
 
     function getConversionAmount(transaction, logIndex = 0) {
         return transaction.logs[logIndex].args._return.toNumber();
