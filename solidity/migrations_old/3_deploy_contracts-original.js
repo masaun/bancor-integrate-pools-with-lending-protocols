@@ -11,24 +11,14 @@ const SmartToken = artifacts.require('SmartToken');
 const TestERC20Token = artifacts.require('TestERC20Token');
 //const WrappedDai = artifacts.require('WrappedDai');
 //const TestNonStandardERC20Token = artifacts.require('TestNonStandardERC20Token');
+
 const ContractIds = artifacts.require('ContractIds');
 const BancorGasPriceLimit = artifacts.require('BancorGasPriceLimit');
+
+
 /* eslint-disable prefer-reflect */
 
 const Web3Utils = require('web3-utils');
-
-//@dev - Import artifact files from cDAI and yDAI
-const CompoundNetwork = require('../artifact-compound/networks/ropsten.json');
-const CompoundABI = require('../artifact-compound/networks/ropsten-abi.json');
-console.log('=== cDAI address ===', CompoundNetwork.Contracts.cDAI);
-
-const cDAIContractAddress = CompoundNetwork.Contracts.cDAI;
-const cDAIAbi = CompoundABI.cDAI;
-let cDAI = new web3.eth.Contract(cDAIAbi, cDAIContractAddress);
-console.log('=== cDAI instance ===', cDAI);
-
-//const cDAI = artifacts.require('');
-//const yDAI = artifacts.require('');
 
 
 module.exports = function(deployer, network, accounts) {
