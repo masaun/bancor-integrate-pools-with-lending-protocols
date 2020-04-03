@@ -18,8 +18,17 @@ const BancorGasPriceLimit = artifacts.require('BancorGasPriceLimit');
 const Web3Utils = require('web3-utils');
 
 //@dev - Import artifact files from cDAI and yDAI
-const cDAI = artifacts.require('');
-const yDAI = artifacts.require('');
+const CompoundNetwork = require('../artifact-compound/networks/ropsten.json');
+const CompoundABI = require('../artifact-compound/networks/ropsten-abi.json');
+console.log('=== cDAI address ===', CompoundNetwork.Contracts.cDAI);
+
+const cDAIContractAddress = CompoundNetwork.Contracts.cDAI;
+const cDAIAbi = CompoundABI.cDAI;
+let cDAI = new web3.eth.Contract(cDAIAbi, cDAIContractAddress);
+console.log('=== cDAI instance ===', cDAI);
+
+//const cDAI = artifacts.require('');
+//const yDAI = artifacts.require('');
 
 
 module.exports = function(deployer, network, accounts) {
