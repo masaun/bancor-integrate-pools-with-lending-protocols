@@ -17,6 +17,10 @@ const BancorGasPriceLimit = artifacts.require('BancorGasPriceLimit');
 
 const Web3Utils = require('web3-utils');
 
+//@dev - Import artifact files from cDAI and yDAI
+const cDAI = artifacts.require('');
+const yDAI = artifacts.require('');
+
 
 module.exports = function(deployer, network, accounts) {
     let overwrite = true;
