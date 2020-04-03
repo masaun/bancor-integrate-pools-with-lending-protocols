@@ -1,18 +1,21 @@
 /* global artifacts */
 //const NonStandardTokenRegistry = artifacts.require('NonStandardTokenRegistry');
 const BancorNetwork = artifacts.require('BancorNetwork');
-const ContractIds = artifacts.require('ContractIds');
 const BancorConverter = artifacts.require('BancorConverter');
-const SmartToken = artifacts.require('SmartToken');
+const BancorConverterFactory = artifacts.require('BancorConverterFactory');
+const BancorConverterUpgrader = artifacts.require('BancorConverterUpgrader');
 const BancorFormula = artifacts.require('BancorFormula');
-const BancorGasPriceLimit = artifacts.require('BancorGasPriceLimit');
 const ContractRegistry = artifacts.require('ContractRegistry');
 const ContractFeatures = artifacts.require('ContractFeatures');
+const SmartToken = artifacts.require('SmartToken');
 const TestERC20Token = artifacts.require('TestERC20Token');
 //const WrappedDai = artifacts.require('WrappedDai');
 //const TestNonStandardERC20Token = artifacts.require('TestNonStandardERC20Token');
-const BancorConverterFactory = artifacts.require('BancorConverterFactory');
-const BancorConverterUpgrader = artifacts.require('BancorConverterUpgrader');
+
+const ContractIds = artifacts.require('ContractIds');
+const BancorGasPriceLimit = artifacts.require('BancorGasPriceLimit');
+
+
 /* eslint-disable prefer-reflect */
 
 const Web3Utils = require('web3-utils');
