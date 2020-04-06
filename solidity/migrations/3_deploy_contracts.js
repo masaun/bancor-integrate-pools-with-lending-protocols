@@ -25,7 +25,7 @@ console.log('=== cDAI address ===', CompoundNetwork.Contracts.cDAI);
 const cDAIContractAddress = CompoundNetwork.Contracts.cDAI;
 const cDAIAbi = CompoundABI.cDAI;
 let cDAI = new web3.eth.Contract(cDAIAbi, cDAIContractAddress);
-console.log('=== cDAI instance ===', cDAI);
+//console.log('=== cDAI instance ===', cDAI);
 
 //const cDAI = artifacts.require('');
 //const yDAI = artifacts.require('');
@@ -151,6 +151,7 @@ module.exports = function(deployer, network, accounts) {
                         }));
 
                     let connectorToken = contracts['CONNECTOR_1'];
+                    //let connectorToken = cDAI;   //[Error]：connectorToken.approve is not a function
 
                     let weiAmount = Web3Utils.toWei('0.1');
                     //let sendres = await connectorToken.sendTransaction({from: accounts[0], value: weiAmount});
@@ -159,6 +160,7 @@ module.exports = function(deployer, network, accounts) {
                     await trystage( deployer.deploy(
                         BancorConverter,
                         smartToken.address, contractRegistry.address, 30000, contracts['CONNECTOR_1'].address, 250000
+                        //smartToken.address, contractRegistry.address, 30000, cDAIContractAddress, 250000
                         ).then(async (instance) => {
                             contracts['CONVERTER'] = instance;
                         }));

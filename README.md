@@ -1,4 +1,29 @@
-﻿
+# Bancor integrate pools with lending protocols
+（In progress）
+- This project is that try to integrate Bancor liquidly pool with lending protocol（i.e. Compound, Curve.fi）
+
+<br>
+
+## 【References】
+- [Funding The Future / Gitcoin Hackathon]
+  - [Challenge 1 - New Liquidity Pool Designs]：  
+    https://gitcoin.co/issue/bancorprotocol/contracts/344/4119
+
+  - Repos of bancor-contract
+    https://github.com/bancorprotocol/contract
+
+  - Document of Compound（cToken interface）
+    https://compound.finance/docs#networks
+
+  - Document of Curve.fi（IyDAI interface）
+    https://docs.iearn.finance/v3-yield-tokens/ydai  
+
+
+
+<br>
+
+<hr>
+
 # Bancor Protocol Contracts v0.5 (beta)
 
 ## Overview
